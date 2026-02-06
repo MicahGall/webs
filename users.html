@@ -137,10 +137,7 @@
             if (users.length === 0) {
                 usersGrid.innerHTML = '<p>No users found</p>';
             } else {
-                // Sort users by most recent (assuming id is timestamp)
                 users.sort((a, b) => parseInt(b.id) - parseInt(a.id));
-                
-                // Display first 20 users
                 const recentUsers = users.slice(0, 20);
                 
                 recentUsers.forEach(user => {
@@ -156,7 +153,6 @@
                 });
             }
 
-            // Function to load a zip from GitHub Release
             async function loadZipFromRelease(url) {
                 try {
                     const response = await fetch(url);
@@ -167,7 +163,6 @@
                         file.async("blob").then(blob => {
                             const objectURL = URL.createObjectURL(blob);
 
-                            // Display images
                             if (file.name.endsWith(".png") || file.name.endsWith(".jpg") || file.name.endsWith(".jpeg")) {
                                 const img = new Image();
                                 img.src = objectURL;
@@ -175,7 +170,6 @@
                                 document.body.appendChild(img);
                             }
 
-                            // Play audio
                             if (file.name.endsWith(".mp3") || file.name.endsWith(".ogg")) {
                                 const audio = new Audio(objectURL);
                                 audio.controls = true;
@@ -191,11 +185,11 @@
             }
 
             // Load the 200MB zip automatically
-            loadZipFromRelease("https://github.com/YOUR_USERNAME/YOUR_REPO/releases/download/v1.0/emulator.zip");
+            loadZipFromRelease("https://github.com/MicahGall/webs/releases/download/we/emulator.zip");
 
-            // Load the 1.6GB zip only when button clicked
+            // Load the 1.6GB zip only on button click
             document.getElementById("loadBigZip").addEventListener("click", () => {
-                loadZipFromRelease("https://github.com/YOUR_USERNAME/YOUR_REPO/releases/download/v1.0/bigfile.zip");
+                loadZipFromRelease("https://github.com/MicahGall/webs/releases/download/we/g.zip");
             });
         });
     </script>
